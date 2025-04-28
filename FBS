@@ -1,0 +1,48 @@
+
+import java.util.Scanner;
+
+public class NathalieAI {
+    private Scanner scanner;
+
+    public NathalieAI() {
+        this.scanner = new Scanner(System.in);
+    }
+
+    public void start() {
+        System.out.println("Hello! I am Nathalie, your AI assistant. How can I assist you today?");
+        while (true) {
+            try {
+                String userInput = scanner.nextLine().trim().toLowerCase();
+                processInput(userInput);
+            } catch (Exception e) {
+                System.err.println("An error occurred: " + e.getMessage());
+            }
+        }
+    }
+
+    private void processInput(String input) {
+        switch (input) {
+            case "exit":
+                System.out.println("Goodbye! Have a great day!");
+                System.exit(0);
+                break;
+            case "help":
+                System.out.println("Available commands:");
+                System.out.println("  - help: Display this message");
+                System.out.println("  - exit: Exit the program");
+                System.out.println("  - tell me a joke: Hear a joke");
+                break;
+            case "tell me a joke":
+                System.out.println("Why don't scientists trust atoms? Because they make up everything!");
+                break;
+            default:
+                System.out.println("You said: " + input);
+                System.out.println("I'm not sure I understand. Type 'help' for available commands.");
+        }
+    }
+
+    public static void main(String[] args) {
+        NathalieAI nathalie = new NathalieAI();
+        nathalie.start();
+    }
+}
